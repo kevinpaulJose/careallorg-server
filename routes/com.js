@@ -30,12 +30,37 @@ recordRoutes.route("/fetch").post(async function (req, res) {
   }
 });
 
-recordRoutes.route("/update").post(function (req, res) {
+recordRoutes.route("/update/status").post(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { order_id: req.body.order_id };
   const updates = {
     $set: {
       status: req.body.status,
+      last_modified: new Date(),
+    },
+  };
+
+  dbConnect
+    .collection(req.body.item)
+    .updateOne(listingQuery, updates, function (err, _result) {
+      if (err) {
+        console.log("err");
+        res
+          .status(400)
+          .send(`Error updating likes on listing with id ${listingQuery.id}!`);
+      } else {
+        res.status(204).send();
+        console.log("1 document updated");
+      }
+    });
+});
+
+recordRoutes.route("/update/paid").post(function (req, res) {
+  const dbConnect = dbo.getDb();
+  const listingQuery = { order_id: req.body.order_id };
+  const updates = {
+    $set: {
+      paid: req.body.paid,
       last_modified: new Date(),
     },
   };
