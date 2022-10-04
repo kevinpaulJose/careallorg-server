@@ -114,7 +114,7 @@ recordRoutes.route("/orders").post(function (req, res) {
         customer_phone: req.body.phone,
       },
       order_meta: {
-        return_url: `https://careall.org/{order_id}/{order_token}`,
+        return_url: `https://careall.org/orders/{order_id}/{order_token}`,
       },
       order_id: req.body.order_id,
       order_amount: req.body.amount,
