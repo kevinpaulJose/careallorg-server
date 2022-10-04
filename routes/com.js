@@ -31,7 +31,7 @@ recordRoutes.route("/fetch").post(async function (req, res) {
   }
 });
 
-recordRoutes.route("/amount/fetch").post(async function (req, res) {
+recordRoutes.route("/amount").get(async function (req, res) {
   const dbConnect = dbo.getDb();
 
   dbConnect
