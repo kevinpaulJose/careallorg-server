@@ -24,7 +24,7 @@ recordRoutes.route("/fastag").post(function (req, res) {
         aadhar_file: req.body.aadhar_file,
         pan_file: req.body.pan_file,
         reg_cert_file: req.body.reg_cert_file,
-        status: "Order Placed",
+        status: "Pending Payment",
         paid: req.body.paid,
         type: req.body.type,
       };

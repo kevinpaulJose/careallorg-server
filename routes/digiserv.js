@@ -18,7 +18,7 @@ recordRoutes.route("/digiserv").post(function (req, res) {
         aadhar_file: req.body.aadhar_file,
         pan_file: req.body.pan_file,
         photo_file: req.body.photo_file,
-        status: "Order Placed",
+        status: "Pending Payment",
         paid: req.body.paid,
         dsc_class: req.body.dsc_class,
         type: req.body.type,
