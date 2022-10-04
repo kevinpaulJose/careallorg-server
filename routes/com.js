@@ -31,6 +31,21 @@ recordRoutes.route("/fetch").post(async function (req, res) {
   }
 });
 
+recordRoutes.route("/amount/fetch").post(async function (req, res) {
+  const dbConnect = dbo.getDb();
+
+  dbConnect
+    .collection("amount")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) {
+        res.status(400).send("Error fetching listings!");
+      } else {
+        res.json(result);
+      }
+    });
+});
+
 recordRoutes.route("/fetch/id").post(async function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
