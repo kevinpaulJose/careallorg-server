@@ -6,8 +6,11 @@ const dbo = require("./db/conn");
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+const corsOptions = {
+  origin: "*",
+};
+app.use(cors(corsOptions));
 
-app.use(cors());
 app.use(express.json());
 app.use(require("./routes/fastag"));
 app.use(require("./routes/pan"));
