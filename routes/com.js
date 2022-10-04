@@ -30,6 +30,34 @@ recordRoutes.route("/fetch").post(async function (req, res) {
   }
 });
 
+recordRoutes.route("/fetch/id").post(async function (req, res) {
+  const dbConnect = dbo.getDb();
+
+  // if (req.body.status == "all") {
+  //   dbConnect
+  //     .collection(req.body.item)
+  //     .find({})
+  //     .toArray(function (err, result) {
+  //       if (err) {
+  //         res.status(400).send("Error fetching listings!");
+  //       } else {
+  //         res.json(result);
+  //       }
+  //     });
+  // } else {
+  dbConnect
+    .collection(req.body.item)
+    .find({ order_id: req.body.order_id })
+    .toArray(function (err, result) {
+      if (err) {
+        res.status(400).send("Error fetching listings!");
+      } else {
+        res.json(result);
+      }
+    });
+  // }
+});
+
 recordRoutes.route("/update/status").post(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { order_id: req.body.order_id };
