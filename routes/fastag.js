@@ -37,7 +37,8 @@ recordRoutes.route("/fastag").post(function (req, res) {
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
             res.status(204)
-            res.json({order_id: `FAS${count.toString()}`})
+            res.json({order_id: `FAS${count.toString()}`});
+            res.send();
           }
         });
     });
