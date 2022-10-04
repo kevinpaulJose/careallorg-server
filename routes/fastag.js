@@ -26,6 +26,7 @@ recordRoutes.route("/fastag").post(function (req, res) {
         reg_cert_file: req.body.reg_cert_file,
         status: "Order Placed",
         paid: req.body.paid,
+        type: req.body.type
       };
 
       dbConnect
