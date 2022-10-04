@@ -13,7 +13,6 @@ recordRoutes.route("/digiserv").post(function (req, res) {
         last_modified: new Date(),
         title: req.body.title,
         firstName: req.body.firstName,
-        middleName: req.body.middleName,
         lastName: req.body.lastName,
         email_id: req.body.email_id,
         aadhar_file: req.body.aadhar_file,
