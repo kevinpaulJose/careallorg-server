@@ -31,7 +31,7 @@ recordRoutes.route("/pan").post(function (req, res) {
         address_file: req.body.address_file,
         status: "Order Placed",
         paid: req.body.paid,
-        type: req.body.type
+        type: req.body.type,
       };
 
       dbConnect
@@ -41,7 +41,7 @@ recordRoutes.route("/pan").post(function (req, res) {
             res.status(400).send("Error inserting matches!");
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
-            res.status(204).send();
+            res.json({ order_id: `PAN${count.toString()}` });
           }
         });
     });

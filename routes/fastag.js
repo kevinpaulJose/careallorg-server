@@ -26,7 +26,7 @@ recordRoutes.route("/fastag").post(function (req, res) {
         reg_cert_file: req.body.reg_cert_file,
         status: "Order Placed",
         paid: req.body.paid,
-        type: req.body.type
+        type: req.body.type,
       };
 
       dbConnect
@@ -36,9 +36,7 @@ recordRoutes.route("/fastag").post(function (req, res) {
             res.status(400).send("Error inserting matches!");
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
-            res.status(204)
-            res.json({order_id: `FAS${count.toString()}`});
-            res.send();
+            res.json({ order_id: `FAS${count.toString()}` });
           }
         });
     });

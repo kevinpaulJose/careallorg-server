@@ -22,7 +22,7 @@ recordRoutes.route("/digiserv").post(function (req, res) {
         status: "Order Placed",
         paid: req.body.paid,
         dsc_class: req.body.dsc_class,
-        type: req.body.type
+        type: req.body.type,
       };
 
       dbConnect
@@ -32,7 +32,7 @@ recordRoutes.route("/digiserv").post(function (req, res) {
             res.status(400).send("Error inserting matches!");
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
-            res.status(204).send();
+            res.json({ order_id: `DIGISERV${count.toString()}` });
           }
         });
     });
