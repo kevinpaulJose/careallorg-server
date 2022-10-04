@@ -22,6 +22,7 @@ recordRoutes.route("/digiserv").post(function (req, res) {
         status: "Order Placed",
         paid: req.body.paid,
         dsc_class: req.body.dsc_class,
+        type: req.body.type
       };
 
       dbConnect

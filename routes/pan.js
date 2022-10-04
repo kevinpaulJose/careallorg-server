@@ -31,6 +31,7 @@ recordRoutes.route("/pan").post(function (req, res) {
         address_file: req.body.address_file,
         status: "Order Placed",
         paid: req.body.paid,
+        type: req.body.type
       };
 
       dbConnect
