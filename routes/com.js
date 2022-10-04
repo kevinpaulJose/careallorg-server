@@ -146,7 +146,7 @@ recordRoutes.route("/orders").post(function (req, res) {
     });
 });
 
-recordRoutes.route("/orders").get(function (req, res) {
+recordRoutes.route("/orders/status").post(function (req, res) {
   const options = {
     method: "GET",
     url: `https://sandbox.cashfree.com/pg/orders/${req.body.order_id}`,
