@@ -22,6 +22,7 @@ recordRoutes.route("/digiserv").post(function (req, res) {
         paid: req.body.paid,
         dsc_class: req.body.dsc_class,
         type: req.body.type,
+        mobile_no: req.body.mobile_no,
       };
 
       dbConnect
