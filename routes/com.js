@@ -46,6 +46,31 @@ recordRoutes.route("/amount").get(async function (req, res) {
     });
 });
 
+recordRoutes.route("/amount").post(async function (req, res) {
+  const dbConnect = dbo.getDb();
+  const listingQuery = { id: "1" };
+  const updates = {
+    $set: {
+      fastag: req.body.fastag,
+      pan: req.body.pan,
+      digiserv: req.body.digiserv,
+    },
+  };
+
+  dbConnect
+    .collection("amount")
+    .updateOne(listingQuery, updates, function (err, _result) {
+      if (err) {
+        console.log("err");
+        res
+          .status(400)
+          .send(`Error updating likes on listing with id ${listingQuery.id}!`);
+      } else {
+        res.status(204).send();
+        console.log("1 document updated");
+      }
+    });
+});
 recordRoutes.route("/fetch/id").post(async function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
