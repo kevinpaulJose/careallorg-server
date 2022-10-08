@@ -9,7 +9,7 @@ recordRoutes.route("/pan").post(function (req, res) {
     .count()
     .then((count) => {
       const matchDocument = {
-        order_id: `PAN${count.toString()}`,
+        order_id: `PAN${req.body.a_mobile_no}${count.toString()}`,
         last_modified: new Date(),
         title: req.body.title,
         a_firstName: req.body.a_firstName,
@@ -41,7 +41,9 @@ recordRoutes.route("/pan").post(function (req, res) {
             res.status(400).send("Error inserting matches!");
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
-            res.json({ order_id: `PAN${count.toString()}` });
+            res.json({
+              order_id: `PAN${req.body.a_mobile_no}${count.toString()}`,
+            });
           }
         });
     });

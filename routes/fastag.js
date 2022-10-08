@@ -9,7 +9,7 @@ recordRoutes.route("/fastag").post(function (req, res) {
     .count()
     .then((count) => {
       const matchDocument = {
-        order_id: `FAS${count.toString()}`,
+        order_id: `FAS${req.body.mobile_no}${count.toString()}`,
         last_modified: new Date(),
         title: req.body.title,
         firstName: req.body.firstName,
@@ -36,7 +36,9 @@ recordRoutes.route("/fastag").post(function (req, res) {
             res.status(400).send("Error inserting matches!");
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
-            res.json({ order_id: `FAS${count.toString()}` });
+            res.json({
+              order_id: `FAS${req.body.mobile_no}${count.toString()}`,
+            });
           }
         });
     });
