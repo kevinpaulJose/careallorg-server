@@ -7,7 +7,7 @@ const dbo = require("./db/conn");
 const PORT = process.env.PORT || 5000;
 const app = express();
 const corsOptions = {
-  origin: "*",
+  origin: "https://careall.co.in/",
 };
 app.use(cors(corsOptions));
 
